@@ -1,3 +1,5 @@
+import { FloatingNavigation } from "@/components/navigation/nav.component";
+import { ThemeProvider } from "@/components/theme/theme.component";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -16,7 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} dark:bg-zinc-900`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <FloatingNavigation />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
